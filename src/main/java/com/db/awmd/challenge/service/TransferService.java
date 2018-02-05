@@ -43,7 +43,7 @@ public class TransferService {
      * @param transfers {@link com.db.awmd.challenge.domain.Transfer}
      */
     public void transfer(List<Transfer> transfers) {
-        transfers.stream().forEach(this::transfer);
+        transfers.parallelStream().forEach(this::transfer);
     }
 
     /**

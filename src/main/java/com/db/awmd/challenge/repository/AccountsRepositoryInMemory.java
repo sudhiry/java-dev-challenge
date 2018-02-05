@@ -37,7 +37,6 @@ public class AccountsRepositoryInMemory implements AccountsRepository {
 
     @Override
     public boolean updateAccountsForTransactions(List<Transaction> transactions) {
-        // transactions.parallelStream().forEach(transaction -> {
         log.debug("Updating account in repository for account {}", transactions);
         transactions.stream().forEach(transaction -> {
             // computeIfPresent method perform the operation atomically.
