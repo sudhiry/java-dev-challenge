@@ -16,13 +16,15 @@ To check the code coverage use command with unit tests
 ```
 gradle clean build jacocoTestReport
 ```
+
+***Note:*** You need to have Gradle 1.3 or more already installed on the system. 
  
 ### Deploy
 You can deploy the project using below command
 ```
 java -jar build/libs/Java-Challenge-0.0.1-SNAPSHOT.jar
 ```
-***Note:*** You need to have Java 1.8 already installed on the machine.
+***Note:*** You need to have Java 1.8 already installed on the system.
 
 ### Production deployment
 
