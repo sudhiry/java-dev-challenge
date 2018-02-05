@@ -69,19 +69,17 @@ public class TransferService {
         this.validateTransfer(fromAccount, toAccount, amount);
 
         log.debug("Updating accounts for transaction in accounts {} and {}", fromAccount, toAccount);
-        boolean transferComplete = accountsRepository.updateAccountsForTransactions(Arrays.asList(
+        accountsRepository.updateAccountsForTransactions(Arrays.asList(
                 // Reduce amount from account
                 new Transaction(transfer.getAccountFromId(), transfer.getAmount().negate()),
                 // Add amount to account
                 new Transaction(transfer.getAccountToId(), transfer.getAmount())));
 
-        if(transferComplete) {
-            log.debug("Sending notification for transaction to accounts {} and {}", fromAccount, toAccount);
-            notificationService.notifyAboutTransfer(fromAccount,
-                    "Amount "+ amount + " is transferred to account ID " + toAccount.getAccountId());
-            notificationService.notifyAboutTransfer(toAccount,
-                    "Amount " + amount + " is transferred from account ID " + fromAccount.getAccountId());
-        }
+        log.debug("Sending notification for transaction to accounts {} and {}", fromAccount, toAccount);
+        notificationService.notifyAboutTransfer(fromAccount,
+                "Amount "+ amount + " is transferred to account ID " + toAccount.getAccountId());
+        notificationService.notifyAboutTransfer(toAccount,
+                "Amount " + amount + " is transferred from account ID " + fromAccount.getAccountId());
     }
 
     /**
