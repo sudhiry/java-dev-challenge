@@ -99,14 +99,16 @@ public class TransferService {
 
         log.debug("Validating accounts for transaction {} and {}", fromAccount, toAccount);
 
+        // Should not be same account
         if(fromAccount.getAccountId().equals(toAccount.getAccountId())) {
             throw new SameAccountTransactionException("Can not transfer amount to same account");
         }
-
+        // Should not overdraft
         if(!(fromAccount.getBalance().subtract(amount).compareTo(BigDecimal.ZERO) >= 0)){
             throw new InsufficientMoneyTransactionException("Insufficient money to transfer");
         }
-        if(!(amount.compareTo(BigDecimal.ZERO) >= 0)){
+        // amount should be positive
+        if(!(amount.compareTo(BigDecimal.ZERO) > 0)){
             throw new NegativeAmountTransactionException("Cannot transfer negative amount");
         }
 

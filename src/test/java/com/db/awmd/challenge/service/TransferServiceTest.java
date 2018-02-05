@@ -214,4 +214,30 @@ public class TransferServiceTest {
             assertThat(this.accountsService.getAccount(accountIdTo).getBalance()).isEqualTo(new BigDecimal(1000));
         }
     }
+
+    /**
+     * Test for transferring the zero amount from one account to another
+     *
+     * @throws Exception
+     */
+    @Test
+    public void transfer_Zero() throws Exception {
+        String accountIdFrom  = UUID.randomUUID().toString();
+        String accountIdTo = UUID.randomUUID().toString();
+
+        Account accountFrom = new Account(accountIdFrom, new BigDecimal(1000));
+        this.accountsService.createAccount(accountFrom);
+
+        Account accountTo = new Account(accountIdTo, new BigDecimal(1000));
+        this.accountsService.createAccount(accountTo);
+
+        try {
+            this.transferService.transfer(new Transfer(accountIdFrom, accountIdTo, new BigDecimal(0)));
+            fail("Should have failed when transfer amount is negative");
+        } catch (NegativeAmountTransactionException ex) {
+            assertThat(ex.getMessage()).isEqualTo("Cannot transfer negative amount");
+            assertThat(this.accountsService.getAccount(accountIdFrom).getBalance()).isEqualTo(new BigDecimal(1000));
+            assertThat(this.accountsService.getAccount(accountIdTo).getBalance()).isEqualTo(new BigDecimal(1000));
+        }
+    }
 }

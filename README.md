@@ -32,5 +32,11 @@ java -jar build/libs/Java-Challenge-0.0.1-SNAPSHOT.jar
 java -Dspring.profiles.active=production -jar build/libs/Java-Challenge-0.0.1-SNAPSHOT.jar
 ```
 - The logging level for production level should be ERROR, so only errors will be logged.
-- The logs should be appended in a file. Currently logs are getting appended in java-dev-challenge.log file. 
+- The logs should be appended in a file. Currently logs are getting appended in java-dev-challenge.log file.
+
+### Future enhancement for production support
+- The test cases for the repository layers are missing can be added.
+- The domain model is same for web and repository level, can be segregated.
+- To generate unique error id, add it as part of error response and log in application error logs for any error occurred 
+    in the REST. So that the error can be tracked as part of logs in production support.
 
