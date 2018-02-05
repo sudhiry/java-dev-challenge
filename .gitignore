@@ -1,6 +1,7 @@
 .gradle
 /build/
 /out/
+java-dev-challenge.log
 !gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###

@@ -6,10 +6,16 @@ This is Spring boot application which does few accounts operations.
 - transfer money from one account to account.
 
 ### Build
+
 This project use gradle for build and installation.
-``` gradle clean build```
+``` 
+gradle clean build
+```
+
 To check the code coverage use command with unit tests
-``` gradle clean build jacocoTestReport```
+```
+gradle clean build jacocoTestReport
+```
  
 ### Deploy
 You can deploy the project using below command
@@ -20,10 +26,11 @@ java -jar build/libs/Java-Challenge-0.0.1-SNAPSHOT.jar
 
 ### Production deployment
 
-- The application should have different Profiles to work on. As current application supports production profile and development profile
-- For production level deployment you can run the project using below command
+- The application should have different profiles to work on. As current application supports production profile and development profile
+- Spring boot by default supports profiles. For production level deployment you can run the project using below command
 ``` 
 java -Dspring.profiles.active=production -jar build/libs/Java-Challenge-0.0.1-SNAPSHOT.jar
 ```
-- Spring boot by default supports profiles, so for production deployment you can provide active profile as production.
+- The logging level for production level should be ERROR, so only errors will be logged.
+- The logs should be appended in a file. Currently logs are getting appended in java-dev-challenge.log file. 
 
