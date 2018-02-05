@@ -26,7 +26,8 @@ java -jar build/libs/Java-Challenge-0.0.1-SNAPSHOT.jar
 
 ### Production deployment
 
-- The application should have different profiles to work on. As current application supports production profile and development profile
+- The application should have different profiles to work on. As current application supports production profile and 
+    development profile
 - Spring boot by default supports profiles. For production level deployment you can run the project using below command
 ``` 
 java -Dspring.profiles.active=production -jar build/libs/Java-Challenge-0.0.1-SNAPSHOT.jar
@@ -34,9 +35,15 @@ java -Dspring.profiles.active=production -jar build/libs/Java-Challenge-0.0.1-SN
 - The logging level for production level should be ERROR, so only errors will be logged.
 - The logs should be appended in a file. Currently logs are getting appended in java-dev-challenge.log file.
 
-### Future enhancement for production support
-- The test cases for the repository layers are missing can be added.
-- The domain model is same for web and repository level, can be segregated.
-- To generate unique error id, add it as part of error response and log in application error logs for any error occurred 
-    in the REST. So that the error can be tracked as part of logs in production support.
+### Future enhancement needed for production support
+- To add error tracking by generating unique error id, adding it as part of error response and logging in application 
+    error logs for any error occurred in the REST. So that the error can be tracked as part of logs in production support.
+- Adding service discovery (can use Netflix Eureka) in the application so that APIs can be discovered.
+- Adding load balancer (can use Netflix Ribbon) in the application for load balancing, fault tolerance and caching.
+- Adding security and monitoring (can use Netflix Zuul) in the application for authentication and monitoring.
+
+### Future enhancement needed for application code quality 
+- To add the test cases for the repository layers.
+- To segregate the domain model which is same for web and repository level.
+
 
